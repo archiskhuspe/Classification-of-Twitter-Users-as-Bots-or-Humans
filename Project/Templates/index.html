@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Bot or Human?</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predicting Bot/Non-Bot</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="POST" >
+    	<input type="text" name='screen_name_binary' placeholder="screen_name_binary" required="required" />
+        <input type="text" name='name_binary' placeholder="name_binary" required="required" />
+		<input type="text" name='description_binary' placeholder='description_binary' required="required" />
+		<input type="text" name='status_binary' placeholder='status_binary' required="required" />
+		<input type="text" name='verified' placeholder='verified' required="required" />
+		<input type="text" name='followers_count' placeholder='followers_count' required="required" />
+		<input type="text" name='friends_count' placeholder='friends_count' required="required" />
+		<input type="text" name='statuses_count' placeholder='statuses_count' required="required" />
+		<input type="text" name='listed_count_binary' placeholder='listed_count_binary' required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+<head>
+	<style>
+
+		/* Set display to none for image*/
+		#image1 {
+			display: none;
+		}
+		#image2 {
+			display: none;
+		}
+		#image3 {
+			display: none;
+		}
+		#image4 {
+			display: none;
+		}
+		#image5 {
+			display: none;
+		}
+	</style>
+	<title>Visualisations</title>
+</head>
+
+
+	<div>
+		<h1>Visualisations</h1>
+		<h3>Decision Tree ROC Curve</h3>
+
+		<!-- Add id to image -->
+		<img id="image1" src="decisiontree.png"
+			alt="decisiontree" />
+	</div>
+
+	<button type="button"
+		onclick="show()" id="btn1">
+		Show Graph
+	</button>
+
+
+	<div>
+		<h3>Multinomial Naive Bayes ROC Curve</h3>
+
+		<!-- Add id to image -->
+		<img id="image2" src="multinomialnaivebayes.png"
+			alt="multinomialnaivebayes" />
+	</div>
+
+	<button type="button"
+		onclick="show2()" id="btn2">
+		Show Graph
+	</button>
+
+
+	<div>
+		<h3>Random Forest ROC Curve</h3>
+
+		<!-- Add id to image -->
+		<img id="image3" src="randomforest.png"
+			alt="randomforest" />
+	</div>
+
+	<button type="button"
+		onclick="show3()" id="btn3">
+		Show Graph
+	</button>
+
+
+	<div>
+		<h3>SVM ROC Curve</h3>
+
+		<!-- Add id to image -->
+		<img id="image4" src="svm.png"
+			alt="svm" />
+	</div>
+
+	<button type="button"
+		onclick="show4()" id="btn4">
+		Show Graph
+	</button>
+
+
+	<div>
+		<h1>Performance Evaluation</h1>
+		<h3>Result (obtained using all four algorithms)</h3>
+
+		<!-- Add id to image -->
+		<img id="image5" src="result.png"
+			alt="result" />
+	</div>
+
+	<button type="button"
+		onclick="show5()" id="btn5">
+		Show Result!
+	</button>
+	<script>
+		function show() {
+
+			/* Access image by id and change
+			the display property to block*/
+			document.getElementById('image1')
+					.style.display = "block";
+
+			document.getElementById('btn1')
+					.style.display = "none";
+		}
+		function show2() {
+
+			/* Access image by id and change
+			the display property to block*/
+			document.getElementById('image2')
+					.style.display = "block";
+
+			document.getElementById('btn2')
+					.style.display = "none";
+		}
+		function show3() {
+
+			/* Access image by id and change
+			the display property to block*/
+			document.getElementById('image3')
+					.style.display = "block";
+
+			document.getElementById('btn3')
+					.style.display = "none";
+		}
+		function show4() {
+
+			/* Access image by id and change
+			the display property to block*/
+			document.getElementById('image4')
+					.style.display = "block";
+
+			document.getElementById('btn4')
+					.style.display = "none";
+		}
+		function show5() {
+
+			/* Access image by id and change
+			the display property to block*/
+			document.getElementById('image5')
+					.style.display = "block";
+
+			document.getElementById('btn5')
+					.style.display = "none";
+		}
+	</script>
+
+
+</body>
+</html>
